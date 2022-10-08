@@ -1,0 +1,28 @@
+{
+  "name": "microservicewithgraphql",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "## Initial Approach First, I'll start with creating a simple monolith using a schema first approach where I'll have a query/mutation of a product. The mutation can then either be stored in memory (object) or saved in a database such as Mongodb.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitaminsofsalem/MicroServiceWithGraphQL-BachelorThesis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitaminsofsalem/MicroServiceWithGraphQL-BachelorThesis/issues"
+  },
+  "homepage": "https://github.com/vitaminsofsalem/MicroServiceWithGraphQL-BachelorThesis#readme",
+  "dependencies": {
+    "apollo-server": "^3.10.2",
+    "bluebird": "^3.7.2",
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "mongodb": "^4.10.0",
+    "nodemon": "^2.0.20"
+  }
+}
