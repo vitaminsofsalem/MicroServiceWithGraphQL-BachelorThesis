@@ -1,66 +1,64 @@
 import { gql } from "apollo-server";
 
-
 export const typeDefs = gql`
-type Query {
-  hello: String
-  product(id: ID!): Product
-  categories: [Category!]!
-  category(id: ID!): Category
-}
+  type Query {
+    product(id: ID!): Product
+    products: [Product!]!
+    categories: [Category!]!
+    category(id: ID!): Category
+  }
 
-type Mutation {
-  addCategory(input: AddCategoryInput!): Category!
-  addProduct(input: AddProductInput!): Product!
-  deleteCategory(id: ID!): Boolean!
-  deleteProduct(id: ID!): Boolean!
-  updateCategory(id: ID!, input: UpdateCategoryInput!): Category
-  updateProduct(id: ID!, input: UpdateProductInput!): Product
-}
+  type Mutation {
+    addProduct(input: AddProductInput!): Product!
+    updateProduct(id: ID!, input: UpdateProductInput!): Product
+    deleteProduct(id: ID!): Boolean!
+    addCategory(input: AddCategoryInput!): Category!
+    updateCategory(id: ID!, input: UpdateCategoryInput!): Category
+    deleteCategory(id: ID!): Boolean!
+  }
 
-type Product {
-  _id: ID!
-  name: String!
-  description: String!
-  quantity: Int!
-  image: String!
-  price: Float!
-  onSale: Boolean!
-  category: Category
-}
+  type Product {
+    _id: ID!
+    name: String!
+    description: String!
+    quantity: Int!
+    image: String!
+    price: Float!
+    onSale: Boolean!
+    categoryId: ID!
+  }
 
-type Category {
-  _id: ID!
-  name: String!
-  products: [Product!]!
-}
+  type Category {
+    _id: ID!
+    name: String!
+    products: [Product!]!
+  }
 
-input AddCategoryInput {
-  name: String!
-}
+  input AddCategoryInput {
+    name: String!
+  }
 
-input UpdateCategoryInput {
-  name: String!
-}
+  input UpdateCategoryInput {
+    name: String!
+  }
 
-input AddProductInput {
-  name: String!
-  description: String!
-  quantity: Int!
-  image: String!
-  price: Float!
-  onSale: Boolean!
-  categoryId: String
-}
+  input AddProductInput {
+    name: String!
+    description: String!
+    quantity: Int!
+    image: String!
+    price: Float!
+    onSale: Boolean!
+    categoryId: String
+  }
 
-input UpdateProductInput {
-  name: String!
-  description: String!
-  quantity: Int!
-  image: String!
-  price: Float!
-  onSale: Boolean!
-  categoryId: String
-}
-
+  input UpdateProductInput {
+    name: String!
+    description: String!
+    quantity: Int!
+    image: String!
+    price: Float!
+    onSale: Boolean!
+    categoryId: String
+  }
 `;

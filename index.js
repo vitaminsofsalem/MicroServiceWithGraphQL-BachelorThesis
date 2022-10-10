@@ -2,14 +2,16 @@ import { ApolloServer, gql } from "apollo-server";
 import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
 import mongoClient from "./db.js";
 import { typeDefs } from "./schema.js";
-import { Product } from "./graphql/resolvers/Product.js";
 import { Query } from "./graphql/resolvers/Query.js";
+import { Mutation } from "./graphql/resolvers/Mutation.js";
+import { Category } from "./graphql/resolvers/Category.js";
 
 const server = new ApolloServer({
   typeDefs,
   resolvers: {
-    Product,
     Query,
+    Category,
+    Mutation
   },
   csrfPrevention: true,
   cache: "bounded",

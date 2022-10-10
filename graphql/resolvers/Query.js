@@ -1,8 +1,16 @@
 export const Query = {
-  hello: (parent, args, context) => "World",
   product: async (parent, args, context) => {
-    const test = await context.db.collection("products").find({}).toArray();
-    console.log(test[0]);
-    return test[0];
+    return await context.db.collection("products").findOne({ _id: args.id });
+  },
+  products: async (parent, args, context) => {
+    return await context.db.collection("products").find({}).toArray();
+  },
+  category: async (parent, args, context) => {
+    return await context.db
+      .collection("categories")
+      .findOne({ _id: args.id })
+  },
+  categories: async (parent, args, context) => {
+    return await context.db.collection("categories").find({}).toArray();
   },
 };

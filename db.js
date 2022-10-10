@@ -1,11 +1,11 @@
 import { MongoClient } from "mongodb";
 import Promise from "bluebird";
+import * as dotenv from 'dotenv';
+dotenv.config()
 
-// package used to make all MongoClient promise based so we can handle callbacks easily using async / await
 Promise.promisifyAll(MongoClient);
 
-const MONGO_URI = "mongodb+srv://amrshawki:amrshawki2001@cluster0.ahhd9iy.mongodb.net/JacksonStores";
-const MONGO_DB_NAME = "JacksonStores";
+const { MONGO_URI, MONGO_DB_NAME } = process.env;
 let dbConnection;
 
 // connection initialization function
