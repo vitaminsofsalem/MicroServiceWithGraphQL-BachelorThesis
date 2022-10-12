@@ -1,6 +1,6 @@
 export const Category = {
-  products: async (parent, args, context) => {
-    return await context.db
+  products: (parent, args, context) => {
+    return context.db
       .collection("products")
       .find({ categoryId: parent._id })
       .toArray();

@@ -49,7 +49,7 @@ export const typeDefs = gql`
     image: String!
     price: Float!
     onSale: Boolean!
-    categoryId: String
+    categoryId: String!
   }
 
   input UpdateProductInput {
@@ -59,6 +59,6 @@ export const typeDefs = gql`
     image: String!
     price: Float!
     onSale: Boolean!
-    categoryId: String
+    categoryId: String!
   }
 `;
