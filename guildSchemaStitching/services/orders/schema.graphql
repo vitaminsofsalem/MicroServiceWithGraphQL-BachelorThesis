@@ -1,0 +1,14 @@
+enum OrderStatus {
+    PENDING
+    APPROVED
+    REJECTED
+}
+
+type Order {
+    id: ID!
+    orderStatus: OrderStatus! 
+}
+
+type Query {
+    order(id: ID!): Order
+}
