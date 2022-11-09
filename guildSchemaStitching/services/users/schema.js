@@ -9,17 +9,18 @@ const __dirname = path.dirname(__filename);
 const typeDefs = readFileSync(__dirname, 'schema.graphql');
 
 // data fixtures
-const products = [
-  { upc: '1', name: 'Cookbook', price: 15.99 },
-  { upc: '2', name: 'Toothbrush', price: 3.99 },
+const users = [
+  { id: '1', name: 'Killer Molly', age: 15, gender: 'FEMALE' },
+  { id: '2', name: 'Freddy Kruger', age: 3, gender: 'MALE' },
+  { id: '3', name: 'Micheal Myers', age: 3, gender: 'MALE' },
 ];
 
 export default makeExecutableSchema({
   typeDefs,
   resolvers: {
     Query: {
-      product: (root, { upc }) => products.find(p => p.upc === upc) || new NotFoundError(),
-      products: (root) => products
+      user: (root, { id }) => users.find(u => u.id === id) || new NotFoundError(),
+      users: (root) => users
     }
   }
 });

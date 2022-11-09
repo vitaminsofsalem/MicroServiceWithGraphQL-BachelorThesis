@@ -9,16 +9,24 @@ const typeDefs = readFileSync(__dirname, 'schema.graphql');
 
 // data fixtures
 const orders = [
-    { id: '1', orderStatus: 'PENDING' },
-    { id: '2', orderStatus: 'APPROVED' },
-    { id: '3', orderStatus: 'REJECTED' },
+    { id: '1', orderStatus: 'PENDING', userId: '1' },
+    { id: '2', orderStatus: 'APPROVED', userId: '2' },
+    { id: '3', orderStatus: 'REJECTED', userId: '1' },
   ];
 
 export default makeExecutableSchema({
   typeDefs,
   resolvers: {
     Query: {
-        order: (root, { id }) => orders.find(o => o.id === id) || new NotFoundError()
+        order: (root, { id }) => orders.find(o => o.id === id) || new NotFoundError(),
+        orders: (root) => orders,
+        _user: (root, { id }) => ({ id, orders: orders.filter(o => o.userId === id) }),
+    },
+    Order: {
+      user: (order) => ({ id: order.userId }),
+    },
+    User: {
+      orders: (user) => orders.filter(o => o.userId === user.id),
     }
 }
 });

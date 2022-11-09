@@ -6,9 +6,17 @@ enum OrderStatus {
 
 type Order {
     id: ID!
-    orderStatus: OrderStatus! 
+    orderStatus: OrderStatus!
+    user: User! 
+}
+
+type User {
+    id: ID!
+    orders: [Order!]!
 }
 
 type Query {
     order(id: ID!): Order
+    orders: [Order!]!
+    _user(id: ID!): User
 }

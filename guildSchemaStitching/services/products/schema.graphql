@@ -6,4 +6,5 @@ type Product {
 
 type Query {
   product(upc: ID!): Product
+  products: [Product!]!
 }

@@ -1,0 +1,16 @@
+enum Gender {
+  MALE
+  FEMALE
+}
+
+type User {
+  id: ID!
+  name: String!
+  age: Int!
+  gender: Gender!
+}
+
+type Query {
+  user(id: ID!): User
+  users: [User!]!
+}

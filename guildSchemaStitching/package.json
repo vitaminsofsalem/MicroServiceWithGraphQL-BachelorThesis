@@ -6,6 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start-products": "nodemon --watch services/products services/products/index.js",
+    "start-orders": "nodemon --watch services/orders services/orders/index.js",
+    "start-users": "nodemon --watch services/users services/users/index.js",
     "start-gateway": "nodemon index.js",
     "start": "concurrently \"yarn:start-*\""
   },
