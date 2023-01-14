@@ -1,4 +1,4 @@
-import { ApolloServer, gql } from "apollo-server";
+import { ApolloServer } from "apollo-server";
 import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
 import mongoClient from "./db.js";
 import { typeDefs } from "./schema.js";

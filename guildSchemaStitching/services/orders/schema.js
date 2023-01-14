@@ -12,7 +12,7 @@ const orders = [
     { id: '1', orderStatus: 'PENDING', userId: '1' },
     { id: '2', orderStatus: 'APPROVED', userId: '2' },
     { id: '3', orderStatus: 'REJECTED', userId: '1' },
-  ];
+];
 
 export default makeExecutableSchema({
   typeDefs,

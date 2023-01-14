@@ -9,17 +9,12 @@ import makeRemoteExecutor from './lib/make_remote_executor.js';
 async function makeGatewaySchema() {
   // Make remote executors:
   // these are simple functions that query a remote GraphQL API for JSON.
-  const productsExec = makeRemoteExecutor('http://localhost:4001/graphql');
   const ordersExec = makeRemoteExecutor('http://localhost:4002/graphql');
   const usersExec = makeRemoteExecutor('http://localhost:4003/graphql');
   const adminContext = { authHeader: 'Bearer my-app-to-app-token' };
 
   return stitchSchemas({
     subschemas: [
-      {
-        schema: await introspectSchema(productsExec, adminContext),
-        executor: productsExec,
-      },
       {
         schema: await introspectSchema(ordersExec, adminContext),
         executor: ordersExec,
@@ -51,7 +46,7 @@ async function makeGatewaySchema() {
   });
 }
 
-waitOn({ resources: ['tcp:4001', 'tcp:4002', 'tcp:4003'] }, async () => {
+waitOn({ resources: ['tcp:4001', 'tcp:4002'] }, async () => {
   const schema = await makeGatewaySchema();
   const app = express();
   app.use('/graphql', graphqlHTTP((req) => ({
