@@ -9,8 +9,8 @@ import makeRemoteExecutor from './lib/make_remote_executor.js';
 async function makeGatewaySchema() {
   // Make remote executors:
   // these are simple functions that query a remote GraphQL API for JSON.
-  const ordersExec = makeRemoteExecutor('http://localhost:4002/graphql');
-  const usersExec = makeRemoteExecutor('http://localhost:4003/graphql');
+  const ordersExec = makeRemoteExecutor('http://localhost:4001/graphql');
+  const usersExec = makeRemoteExecutor('http://localhost:4002/graphql');
   const adminContext = { authHeader: 'Bearer my-app-to-app-token' };
 
   return stitchSchemas({
@@ -24,11 +24,6 @@ async function makeGatewaySchema() {
             selectionSet: '{ id }',
             args: ({ id }) => ({ id }),
           },
-          Order: {
-            fieldName: 'order',
-            selectionSet: '{ id }',
-            args: ({ id }) => ({ id: id }),
-          }
         }
       },
       {

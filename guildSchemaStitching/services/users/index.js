@@ -4,4 +4,4 @@ import schema from './schema.js';
 
 const app = express();
 app.use('/graphql', graphqlHTTP({ schema, graphiql: true }));
-app.listen(4002, () => console.log('users running at http://localhost:4003/graphql'));
+app.listen(4002, () => console.log('users running at http://localhost:4002/graphql'));
